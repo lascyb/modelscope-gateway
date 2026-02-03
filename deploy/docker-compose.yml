@@ -1,7 +1,7 @@
 # ModelScope API Gateway Docker Compose 配置
 #
-# 启动命令:
-#   docker-compose -f deploy/docker-compose.yml up -d
+# 启动命令（从项目根目录运行）:
+#   docker-compose --env-file .env -f deploy/docker-compose.yml up -d
 #
 # 查看日志:
 #   docker-compose -f deploy/docker-compose.yml logs -f

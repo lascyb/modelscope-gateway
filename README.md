@@ -41,7 +41,7 @@ cp env.example .env
 # 编辑 .env 填入 MODELSCOPE_API_KEY
 
 # 启动服务
-docker-compose -f deploy/docker-compose.yml up -d
+docker-compose --env-file .env -f deploy/docker-compose.yml up -d
 
 # 查看日志
 docker-compose -f deploy/docker-compose.yml logs -f
@@ -265,22 +265,21 @@ ModelScope 魔搭社区提供：
 ### 生产环境
 
 ```bash
-docker-compose -f deploy/docker-compose.yml up -d
+docker-compose --env-file .env -f deploy/docker-compose.yml up -d
 ```
 
 ### 开发环境（热重载）
 
 ```bash
-docker-compose -f deploy/docker-compose.dev.yml up
+docker-compose --env-file .env -f deploy/docker-compose.dev.yml up
 ```
 
 ### 启用 Ollama（智能路由）
 
 ```bash
-docker-compose -f deploy/docker-compose.yml --profile with-ollama up -d
+docker-compose --env-file .env -f deploy/docker-compose.yml --profile with-ollama up -d
 ```
 
 ## 📝 License
 
 [Apache License 2.0](LICENSE)
-
