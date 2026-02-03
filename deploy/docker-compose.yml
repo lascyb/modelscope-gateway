@@ -19,12 +19,12 @@ services:
     restart: unless-stopped
     ports:
       - "${SERVER_PORT:-8000}:${SERVER_PORT:-8000}"
+    env_file:
+      - ../.env
     environment:
       - MODELSCOPE_API_KEY=${MODELSCOPE_API_KEY:?请在 .env 文件中设置 MODELSCOPE_API_KEY}
       - SERVER_HOST=${SERVER_HOST:-0.0.0.0}
       - SERVER_PORT=${SERVER_PORT:-8000}
-    env_file:
-      - ../.env
     volumes:
       # 持久化使用量和限制数据
       - ../data/usage:/app/usage
