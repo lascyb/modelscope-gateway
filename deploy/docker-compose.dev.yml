@@ -33,7 +33,7 @@ services:
       - ../limits:/app/limits
     extra_hosts:
       - "host.docker.internal:host-gateway"
-    command: ["uvicorn", "server:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+    command: ["sh", "-c", "uvicorn server:app --host 0.0.0.0 --port ${SERVER_PORT:-8000} --reload"]
     networks:
       - modelscope-net
 
