@@ -7,8 +7,6 @@
 #   - 热重载（代码修改自动重启）
 #   - 挂载源代码
 
-version: "3.8"
-
 services:
   modelscope-gateway:
     build:

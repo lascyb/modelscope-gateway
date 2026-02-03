@@ -9,8 +9,6 @@
 # 停止服务:
 #   docker-compose -f deploy/docker-compose.yml down
 
-version: "3.8"
-
 services:
   # ModelScope API 网关
   modelscope-gateway:
@@ -23,8 +21,8 @@ services:
       - "${SERVER_PORT:-8000}:8000"
     environment:
       - MODELSCOPE_API_KEY=${MODELSCOPE_API_KEY}
-      - SERVER_HOST=0.0.0.0
-      - SERVER_PORT=8000
+      - SERVER_HOST=${SERVER_HOST}
+      - SERVER_PORT=${SERVER_PORT}
     env_file:
       - ../.env
     volumes:
