@@ -1,0 +1,47 @@
+{
+  "models": [
+     {
+      "id": "deepseek-ai/DeepSeek-R1-0528",
+      "name": "DeepSeek-R1-0528",
+      "tier": 1,
+      "enabled": true
+    },
+    {
+      "id": "deepseek-ai/DeepSeek-V3.2",
+      "name": "DeepSeek-V3.2",
+      "tier": 1,
+      "enabled": true
+    },
+    {
+      "id": "moonshotai/Kimi-K2.5",
+      "name": "Kimi-K2.5",
+      "tier": 2,
+      "enabled": true
+    },
+    {
+      "id": "Qwen/Qwen3-235B-A22B-Thinking-2507",
+      "name": "Qwen3-235B-A22B-Thinking-2507",
+      "tier": 2,
+      "enabled": true
+    },
+    {
+      "id": "Qwen/Qwen3-Next-80B-A3B-Thinking",
+      "name": "Qwen3-Next-80B-A3B-Thinking",
+      "tier": 3,
+      "enabled": true
+    },
+    {
+      "id": "qwen/Qwen2.5-7B-Instruct",
+      "name": "Qwen2.5-7B-Instruct",
+      "tier": 4,
+      "enabled": true
+    }
+  ],
+  "smart_routing": {
+    "enabled": true,
+    "local_ai": {
+      "base_url": "http://localhost:11434",
+      "model": "qwen2.5:1.5b"
+    }
+  }
+}

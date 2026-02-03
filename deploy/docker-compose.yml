@@ -1,0 +1,47 @@
+# ModelScope API Gateway Docker Compose 配置
+#
+# 启动命令:
+#   docker-compose -f deploy/docker-compose.yml up -d
+#
+# 查看日志:
+#   docker-compose -f deploy/docker-compose.yml logs -f
+#
+# 停止服务:
+#   docker-compose -f deploy/docker-compose.yml down
+
+version: "3.8"
+
+services:
+  # ModelScope API 网关
+  modelscope-gateway:
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile
+    container_name: modelscope-gateway
+    restart: unless-stopped
+    ports:
+      - "${SERVER_PORT:-8000}:8000"
+    environment:
+      - MODELSCOPE_API_KEY=${MODELSCOPE_API_KEY}
+      - SERVER_HOST=0.0.0.0
+      - SERVER_PORT=8000
+    env_file:
+      - ../.env
+    volumes:
+      # 持久化使用量和限制数据
+      - ../data/usage:/app/usage
+      - ../data/limits:/app/limits
+      # 挂载配置文件（可热更新）
+      - ../models_config.json:/app/models_config.json:ro
+    healthcheck:
+      test: ["CMD", "python", "-c", "import httpx; httpx.get('http://localhost:8000/')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    networks:
+      - modelscope-net
+
+networks:
+  modelscope-net:
+    driver: bridge
