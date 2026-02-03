@@ -38,9 +38,9 @@ from core.api_client import (
 # 配置（从 .env 文件或环境变量读取）
 # ============================================================
 
-API_KEY = os.getenv("MODELSCOPE_API_KEY", "")
-HOST = os.getenv("SERVER_HOST", "0.0.0.0")
-PORT = int(os.getenv("SERVER_PORT", "8000"))
+API_KEY = os.getenv("MODELSCOPE_API_KEY") or ""
+HOST = os.getenv("SERVER_HOST") or "0.0.0.0"
+PORT = int(os.getenv("SERVER_PORT") or "8000")
 
 # ============================================================
 # FastAPI 应用
