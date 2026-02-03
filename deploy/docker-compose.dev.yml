@@ -33,6 +33,8 @@ services:
       # 数据目录
       - ../usage:/app/usage
       - ../limits:/app/limits
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     command: ["uvicorn", "server:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
     networks:
       - modelscope-net

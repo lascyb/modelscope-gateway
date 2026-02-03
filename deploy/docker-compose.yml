@@ -33,6 +33,8 @@ services:
       - ../data/limits:/app/limits
       # 挂载配置文件（可热更新）
       - ../models_config.json:/app/models_config.json:ro
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     healthcheck:
       test: ["CMD", "python", "-c", "import httpx; httpx.get('http://localhost:8000/')"]
       interval: 30s
