@@ -41,7 +41,7 @@
     "enabled": true,
     "local_ai": {
       "base_url": "http://localhost:11434",
-      "model": "qwen2.5:1.5b"
+      "model": "deepseek-r1:8b"
     }
   }
 }

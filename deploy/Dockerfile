@@ -35,7 +35,7 @@ EXPOSE 8000
 
 # 健康检查
 HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
-    CMD sh -c "python -c \"import httpx; httpx.get('http://localhost:${SERVER_PORT:-8000}/')\"" || exit 1
+    CMD python -c "import httpx; httpx.get('http://localhost:8000/')" || exit 1
 
 # 启动命令
-CMD sh -c "uvicorn server:app --host ${SERVER_HOST:-0.0.0.0} --port ${SERVER_PORT:-8000}"
+CMD ["uvicorn", "server:app", "--host", "0.0.0.0", "--port", "8000"]

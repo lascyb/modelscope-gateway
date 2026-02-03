@@ -92,9 +92,14 @@ class ModelScopeClient:
         if not config.get("enabled", False):
             return
 
+        # 优先使用环境变量，其次使用配置文件
         local_ai_config = config.get("local_ai", {})
-        base_url = local_ai_config.get("base_url", "http://localhost:11434")
-        model = local_ai_config.get("model", "qwen2.5:1.5b")
+        base_url = os.getenv("LOCAL_AI_BASE_URL") or local_ai_config.get(
+            "base_url", "http://localhost:11434"
+        )
+        model = os.getenv("LOCAL_AI_MODEL") or local_ai_config.get(
+            "model", "deepseek-r1:8b"
+        )
 
         self._task_analyzer = TaskAnalyzer(base_url=base_url, model=model)
 
